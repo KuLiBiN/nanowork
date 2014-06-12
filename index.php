@@ -44,21 +44,23 @@ require_once('lib/mysql.php');
 <div class="container-fluid" id="content">
 
 
-
 </div>
 
 <script type="text/javascript">
-    $('#tasks_list').click(function(){
+    (function () {
+        $('#tasks_list').click(function () {
 
-        alert('sdfgsdfg');
+            alert('sdfgsdfg');
 
-    });
+        });
+
+    })();
 
 
 </script>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
