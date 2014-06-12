@@ -54,7 +54,7 @@ require_once('lib/mysql.php');
 
 <script type="text/javascript">
 
-        $('#tasks_list').hover(function () {
+        $('#tasks_list').click(function () {
 
             alert('sdfgsdfg');
 
