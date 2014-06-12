@@ -46,21 +46,24 @@ require_once('lib/mysql.php');
 
 </div>
 
+
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
-    (function () {
+
         $('#tasks_list').click(function () {
 
             alert('sdfgsdfg');
 
         });
 
-    })();
 
 
 </script>
 
 
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
