@@ -47,19 +47,19 @@ require_once('lib/mysql.php');
 </div>
 
 
-
-
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 
-        $('#tasks_list').click(function () {
+    $('#tasks_list').click(function () {
 
-            alert('sdfgsdfg');
-
+        $.ajax({
+            url: "ajax/tasks.php"
+        }).done(function (data) {
+            $('#content').html(data);
         });
-
+    });
 
 
 </script>
