@@ -25,7 +25,7 @@ require_once('lib/mysql.php');
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Задачи</a></li>
+            <li class="active" id="">Задачи</li>
             <li><a href="#">Исполнители</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -41,53 +41,13 @@ require_once('lib/mysql.php');
     </div>
 </div>
 
-<div class="container-fluid">
-    <h1 class="page-header">Общие задачи</h1>
-
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Заказчик</th>
-                <th>Описание</th>
-                <th>Стоимость</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            <?php
-
-            $q = mysqli_query($main_db, 'SELECT
-                `tasks`.`id` AS `id`,
-                `tasks`.`author` AS `author_id`,
-                `users`.`name` AS `author_name`,
-                `tasks`.`title` AS `title`,
-                `tasks`.`description` AS `description`,
-                `tasks`.`cost` AS `cost`
-            FROM `tasks`
-            INNER JOIN `users` ON `users`.`id`=`tasks`.`author`
-            WHERE `tasks`.`performer`=0
-            ORDER BY `tasks`.`id` DESC');
-
-            while ($task = mysqli_fetch_assoc($q)) {
-
-                echo '<tr>
-                <td>' . $task['id'] . '</td>
-                <td>' . $task['author_name'] . '</td>
-                <td>' . $task['title'] . '</td>
-                <td>' . $task['cost'] . '</td>
-            </tr>';
-
-            }
-
-            ?>
+<div class="container-fluid" id="content">
 
 
-            </tbody>
-        </table>
-    </div>
+
 </div>
+
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
