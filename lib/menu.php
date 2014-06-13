@@ -1,6 +1,6 @@
 <?php
 
-if (isset($user)) {
+if (!isset($user)) {
     echo '
     <ul class="nav navbar-nav">
         <li class="active"><a href="#" id="tasks_list">Задачи</a></li>
