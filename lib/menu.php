@@ -25,7 +25,7 @@ if (isset($user)) {
         <li><a href="#">Исполнители</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Заказчик {$user['name']}</a></li>
+        <li><a href="#">Заказчик ' . $user['name'] . '</a></li>
     </ul>';
 
     }
@@ -36,7 +36,7 @@ if (isset($user)) {
         <li><a href="#">Исполнители</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Исполнитель {$user['name']}</a></li>
+        <li><a href="#">Исполнитель ' . $user['name'] . '</a></li>
     </ul>';
 
     }
