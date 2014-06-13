@@ -23,47 +23,15 @@ require_once('lib/mysql.php');
         </button>
         <a class="navbar-brand" href="#">Nanowork</a>
     </div>
-    <div class="navbar-collapse collapse navbar-responsive-collapse">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#" id="tasks_list">Задачи</a></li>
-            <li><a href="#">Исполнители</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Авторизация <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Заказчик</a></li>
-                    <li><a href="#">Исполнитель</a></li>
-                    <li><a href="#">Администратор</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse" id="menu"></div>
 </div>
 
-<div class="container-fluid" id="content">
-
-
-</div>
+<div class="container-fluid" id="content"></div>
 
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
-
-    $('#tasks_list').click(function () {
-
-        $.ajax({
-            url: "ajax/tasks.php"
-        }).done(function (data) {
-            $('#content').html(data);
-        });
-    });
-
-
-</script>
-
+<script src="js/main.js"></script>
 
 </body>
 </html>
