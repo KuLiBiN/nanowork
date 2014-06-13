@@ -23,7 +23,9 @@ require_once('lib/mysql.php');
         </button>
         <a class="navbar-brand" href="#">Nanowork</a>
     </div>
-    <div class="navbar-collapse collapse navbar-responsive-collapse" id="menu"></div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse" id="menu">
+        <?php require_once('lib/menu.php'); ?>
+    </div>
 </div>
 
 <div class="container-fluid" id="content"></div>
