@@ -28,7 +28,7 @@ if (!isset($user)) {
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Заказчик ' . $user['name'] . ' <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Мои задачи</a></li>
+                <li><a href="#my_tasks" id="my_tasks">Мои задачи</a></li>
                 <li><a href="#">Мой баланс</a></li>
                 <li><a href="?uid=0">Выход</a></li>
             </ul>
@@ -46,7 +46,7 @@ if (!isset($user)) {
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Исполнитель ' . $user['name'] . ' <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Мои задачи</a></li>
+                <li><a href="#my_tasks" id="my_tasks">Мои задачи</a></li>
                 <li><a href="#">Мой баланс</a></li>
                 <li><a href="?uid=0">Выход</a></li>
             </ul>
