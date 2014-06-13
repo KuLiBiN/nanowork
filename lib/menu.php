@@ -1,7 +1,7 @@
 <?php
 
 if (isset($user)) {
-    echo <<<HTML
+    echo '
     <ul class="nav navbar-nav">
         <li class="active"><a href="#" id="tasks_list">Задачи</a></li>
         <li><a href="#">Исполнители</a></li>
@@ -15,29 +15,29 @@ if (isset($user)) {
                 <li><a href="#">Администратор</a></li>
             </ul>
         </li>
-    </ul>
-HTML;
+    </ul>';
+
 } else {
     if ($user['type'] == 1) {
-        echo <<<HTML
+        echo '
     <ul class="nav navbar-nav">
         <li class="active"><a href="#" id="tasks_list">Задачи</a></li>
         <li><a href="#">Исполнители</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Заказчик {$user['name']}</a></li>
-    </ul>
-HTML;
+    </ul>';
+
     }
     if ($user['type'] == 2) {
-        echo <<<HTML
+        echo '
     <ul class="nav navbar-nav">
         <li class="active"><a href="#" id="tasks_list">Задачи</a></li>
         <li><a href="#">Исполнители</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Исполнитель {$user['name']}</a></li>
-    </ul>
-HTML;
+    </ul>';
+
     }
 }
