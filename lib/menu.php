@@ -29,4 +29,15 @@ HTML;
     </ul>
 HTML;
     }
+    if ($user['type'] == 2) {
+        echo <<<HTML
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="#" id="tasks_list">Задачи</a></li>
+        <li><a href="#">Исполнители</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Исполнитель {$user['name']}</a></li>
+    </ul>
+HTML;
+    }
 }
