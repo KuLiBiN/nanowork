@@ -1,4 +1,13 @@
+// главная страница
+$('#index').click(function () {
+    $.ajax({
+        url: "ajax/index.php"
+    }).done(function (data) {
+        $('#content').html(data);
+    });
+});
 
+// все задачи
 $('#all_tasks').click(function () {
     $.ajax({
         url: "ajax/tasks.php?action=all"
@@ -7,6 +16,7 @@ $('#all_tasks').click(function () {
     });
 });
 
+// мои задачи
 $('#my_tasks').click(function () {
     $.ajax({
         url: "ajax/tasks.php?action=my"

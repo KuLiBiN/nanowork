@@ -22,15 +22,16 @@ require_once('lib/auth.php');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Nanowork</a>
+        <a class="navbar-brand" href="#index" id="index">Nanowork</a>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse" id="menu">
         <?php require_once('lib/menu.php'); ?>
     </div>
 </div>
 
-<div class="container-fluid" id="content"></div>
-
+<div class="container-fluid" id="content">
+    <?php require_once('ajax/index.php'); ?>
+</div>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
