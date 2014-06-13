@@ -3,8 +3,8 @@
 if (!isset($user)) {
     echo '
     <ul class="nav navbar-nav">
-        <li class="active"><a href="#" id="tasks_list">Задачи</a></li>
-        <li><a href="#">Исполнители</a></li>
+        <li><a href="#all_tasks" id="all_tasks">Все задачи</a></li>
+        <li><a href="#all_performers" id="all_performers">Все исполнители</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -21,8 +21,8 @@ if (!isset($user)) {
     if ($user['type'] == 1) {
         echo '
     <ul class="nav navbar-nav">
-        <li class="active"><a href="#" id="tasks_list">Все задачи</a></li>
-        <li><a href="#">Все исполнители</a></li>
+        <li><a href="#all_tasks" id="all_tasks">Все задачи</a></li>
+        <li><a href="#all_performers" id="all_performers">Все исполнители</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -39,8 +39,8 @@ if (!isset($user)) {
     if ($user['type'] == 2) {
         echo '
     <ul class="nav navbar-nav">
-        <li class="active"><a href="#" id="tasks_list">Все задачи</a></li>
-        <li><a href="#">Все исполнители</a></li>
+        <li><a href="#all_tasks" id="all_tasks">Все задачи</a></li>
+        <li><a href="#all_performers" id="all_performers">Все исполнители</a></li>
     </ul>
    <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
