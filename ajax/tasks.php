@@ -5,15 +5,26 @@ require_once('../lib/auth.php');
 
 $action = 'all';
 if (isset($_GET['action'])) {
+    // все задачи
     if ($_GET['action'] == 'all') {
         $action = 'all';
     }
+    // мои задачи
     if ($_GET['action'] == 'my' && isset($user)) {
         $action = 'my';
     }
+    // добавление задачи
     if ($_GET['action'] == 'new' && isset($user)) {
-        echo 'добавлено';
-        print_r($_GET);
+        if (isset($_GET['title']) && isset($_GET['description']) && isset($_GET['cost'])){
+            $title=trim(mysqli_real_escape_string($_GET['title']));
+            $description=trim(mysqli_real_escape_string($main_db, $_GET['description']));
+            $cost=abs(floatval($_GET['cost']));
+            mysqli_query($main_db, 'INSERT INTO `tasks`
+            SET `author`='.$user['id'].',
+            `title`="'.$title.'",
+            `description`="'.$description.'",
+            `cost`='.$cost.'');
+        }
         $action = 'my';
     }
 }
@@ -156,7 +167,7 @@ if ($action == 'my') {
 // форма новой задачи
 $("#newTaskButton").click(function () {
     var form=$("#newTaskForm").serialize();
-
+    $("#newTask").modal("hide");
     newTask(form);
 });
 
