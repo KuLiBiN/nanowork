@@ -166,6 +166,7 @@ $("#newTaskButton").click(function () {
   */
     alert($("#newTaskForm").serialize());
 
+
 });
 
 // все мои задачи
