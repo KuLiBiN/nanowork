@@ -16,7 +16,7 @@ if (isset($_GET['action'])) {
     // добавление задачи
     if ($_GET['action'] == 'new' && isset($user)) {
         if (isset($_GET['title']) && isset($_GET['description']) && isset($_GET['cost'])){
-            $title=trim(mysqli_real_escape_string($_GET['title']));
+            $title=trim(mysqli_real_escape_string($main_db, $_GET['title']));
             $description=trim(mysqli_real_escape_string($main_db, $_GET['description']));
             $cost=abs(floatval($_GET['cost']));
             mysqli_query($main_db, 'INSERT INTO `tasks`
@@ -167,8 +167,8 @@ $("#newTask").modal("hide");
 // форма новой задачи
 $("#newTaskButton").click(function () {
     var form=$("#newTaskForm").serialize();
-    $("#newTask").modal("hide");
     newTask(form);
+    $("#newTask").modal("hide");
 });
 
 // все мои задачи
