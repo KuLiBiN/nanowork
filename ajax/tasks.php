@@ -83,7 +83,7 @@ if ($action == 'my') {
         </tr>
         </thead>
         <tbody>';
-        $q = mysqli_query($main_db, 'SELECT `id`, `title`, `performer`
+        $q = mysqli_query($main_db, 'SELECT `id`, `title`, `performer`, `cost`
         FROM `tasks` WHERE `author`=' . $user['id'] . '
         ORDER BY `id` DESC');
 
@@ -94,7 +94,7 @@ if ($action == 'my') {
             }
             echo '<tr class="work'.$work.'">
                 <td>' . $task['id'] . '</td>
-                <td>' . $users_info[$task['id']] . '</td>
+                <td>' . $users_info[$task['performer']] . '</td>
                 <td>' . $task['title'] . '</td>
                 <td>' . $task['cost'] . '</td>
             </tr>';
