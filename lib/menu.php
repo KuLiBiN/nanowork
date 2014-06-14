@@ -2,10 +2,6 @@
 
 if (!isset($user)) {
     echo '
-    <ul class="nav navbar-nav">
-        <li><a href="#all_tasks" id="all_tasks">Все задачи</a></li>
-        <li><a href="#all_performers" id="all_performers">Все исполнители</a></li>
-    </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Авторизация <b class="caret"></b></a>
