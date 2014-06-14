@@ -112,14 +112,36 @@ if ($action == 'my') {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Новая задача</h4>
       </div>
       <div class="modal-body">
-        ...
+
+       <form class="form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <label for="inputTitle" class="col-lg-2 control-label">Название</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputTitle" placeholder="Название" name="title">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputDescription" class="col-lg-2 control-label">Описание</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" id="inputDescription" name="description"></textarea>
+      </div>
+    </div>
+        <div class="form-group">
+      <label for="inputCost" class="col-lg-2 control-label">Стоимость</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputCost" placeholder="100500" name="cost">
+      </div>
+    </div>
+     </fieldset>
+    </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+        <button type="button" class="btn btn-primary">Добавить</button>
       </div>
     </div>
   </div>
