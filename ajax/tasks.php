@@ -95,7 +95,7 @@ if ($action == 'my') {
             if ($task['performer'] > 0) {
                 $work = 1;
             }
-            echo '<tr class="work'.$work.'">
+            echo '<tr class="work' . $work . '">
                 <td>' . $task['id'] . '</td>
                 <td>' . $users_info[$task['performer']] . '</td>
                 <td>' . $task['title'] . '</td>
@@ -105,7 +105,32 @@ if ($action == 'my') {
         echo '
         </tbody>
     </table>
-</div>';
+</div>
+
+<script type="text/javascript">
+
+// все мои задачи
+$(".bwork").click(function () {
+    $(".work0").show();
+    $(".work1").show();
+});
+
+
+// мои задачи ожидающие
+$(".bwork").click(function () {
+    $(".work0").show();
+    $(".work1").hide();
+});
+
+
+// все мои задачи завершенные
+$(".bwork").click(function () {
+    $(".work0").hide();
+    $(".work1").show();
+});
+</script>
+
+';
     }
 
 
