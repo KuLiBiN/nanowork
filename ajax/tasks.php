@@ -177,9 +177,9 @@ if ($action == 'my') {
 $("#newTaskButton").click(function () {
     var form=$("#newTaskForm").serialize();
     $("#newTask").modal("hide");
-    $("#newTask").on("hide.bs.modal", function(form){
-        newTask(form);
-    });
+
+        setTimeout(newTask(form), 3000);
+
 
 
 });
