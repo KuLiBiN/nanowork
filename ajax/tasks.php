@@ -177,7 +177,7 @@ if ($action == 'my') {
 $("#newTaskButton").click(function () {
     var form=$("#newTaskForm").serialize();
     $("#newTask").modal("hide");
-    $("#newTask").on("hidden.bs.modal", function(form){
+    $("#newTask").on("hide.bs.modal", function(form){
         newTask(form);
     });
 
