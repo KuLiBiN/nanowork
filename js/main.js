@@ -28,7 +28,7 @@ $('#my_tasks').click(function () {
 // новая задача
 function newTask(form) {
     $.ajax({
-        url: "ajax/tasks.php?action=new" + form
+        url: "ajax/tasks.php?action=new&" + form
     }).done(function (data) {
         $('#content').html(data);
     });
