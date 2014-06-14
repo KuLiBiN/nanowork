@@ -153,13 +153,11 @@ if ($action == 'my') {
 
 <script type="text/javascript">
 
-
+// форма новой задачи
 $("#newTaskButton").click(function () {
-
     var form=$("#newTaskForm").serialize();
     $("#newTask").modal("hide");
     newTask(form);
-
 });
 
 // все мои задачи
