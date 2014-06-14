@@ -164,8 +164,9 @@ $("#newTaskButton").click(function () {
             $("#newTask").modal("hide");
     });
   */
-    alert($("#newTaskForm").serialize());
+    //alert($("#newTaskForm").serialize());
 
+test("fffffffffffff");
 
 });
 

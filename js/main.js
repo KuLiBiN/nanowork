@@ -25,8 +25,8 @@ $('#my_tasks').click(function () {
     });
 });
 
+function test(text){
 
+    alert(text);
 
-
-
-
+}
