@@ -117,14 +117,14 @@ $(".bwork").click(function () {
 
 
 // мои задачи ожидающие
-$(".bwork").click(function () {
+$(".bwork0").click(function () {
     $(".work0").show();
     $(".work1").hide();
 });
 
 
 // все мои задачи завершенные
-$(".bwork").click(function () {
+$(".bwork1").click(function () {
     $(".work0").hide();
     $(".work1").show();
 });
