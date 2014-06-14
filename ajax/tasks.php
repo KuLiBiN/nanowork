@@ -11,6 +11,11 @@ if (isset($_GET['action'])) {
     if ($_GET['action'] == 'my' && isset($user)) {
         $action = 'my';
     }
+    if ($_GET['action'] == 'new' && isset($user)) {
+        echo 'добавлено';
+        print_r($_GET);
+        $action = 'my';
+    }
 }
 
 // имена пользователей
@@ -150,15 +155,14 @@ if ($action == 'my') {
 
 
 $("#newTaskButton").click(function () {
-$("#newTask").modal("hide")
-alert("zdfsdfgsdfgsdfg");
 
-/*
     $.ajax({
-        url: "ajax/tasks.php?action=new&"
+        url: "ajax/tasks.php?action=new&"+$("#newTaskForm").serialize();
     }).done(function (data) {
             $("#content").html(data);
-    });*/
+    });
+    $("#newTask").modal("hide");
+
 });
 
 // все мои задачи
