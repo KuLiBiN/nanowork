@@ -25,4 +25,26 @@ $('#my_tasks').click(function () {
     });
 });
 
+// все мои задачи
+$('.bwork').click(function () {
+    $('.work0').show();
+    $('.work1').show();
+});
+
+
+// мои задачи ожидающие
+$('.bwork').click(function () {
+    $('.work0').show();
+    $('.work1').hide();
+});
+
+
+// все мои задачи завершенные
+$('.bwork').click(function () {
+    $('.work0').hide();
+    $('.work1').show();
+});
+
+
+
 
