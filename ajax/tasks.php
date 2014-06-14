@@ -176,7 +176,8 @@ if ($action == 'my') {
 // форма новой задачи
 $("#newTaskButton").click(function () {
     var form=$("#newTaskForm").serialize();
-    $("#newTask").modal("hide").(newTask(form));
+    $("#newTask").modal("hide");
+    newTask(form);
 
 });
 
