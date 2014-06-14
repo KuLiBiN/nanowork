@@ -3,30 +3,39 @@ session_start();
 require_once('../lib/mysql.php');
 require_once('../lib/auth.php');
 
-$action = 'all';
+// работа с задачами только для авторизованных юзеров
+if (!isset($user)) {
+    exit();
+}
+
+// действия с задачами
+$action = 'no';
 if (isset($_GET['action'])) {
-    // все задачи
-    if ($_GET['action'] == 'all') {
+    // все задачи для исполнителей
+    if ($_GET['action'] == 'all' && $user['type'] == 2) {
         $action = 'all';
     }
     // мои задачи
-    if ($_GET['action'] == 'my' && isset($user)) {
+    if ($_GET['action'] == 'my') {
         $action = 'my';
     }
-    // добавление задачи
-    if ($_GET['action'] == 'new' && isset($user)) {
-        if (isset($_GET['title']) && isset($_GET['description']) && isset($_GET['cost'])){
-            $title=trim(mysqli_real_escape_string($main_db, $_GET['title']));
-            $description=trim(mysqli_real_escape_string($main_db, $_GET['description']));
-            $cost=abs(floatval($_GET['cost']));
+    // добавление задачи для заказчиков
+    if ($_GET['action'] == 'new' && $user['type'] == 1) {
+        if (isset($_GET['title']) && isset($_GET['description']) && isset($_GET['cost'])) {
+            $title = trim(mysqli_real_escape_string($main_db, $_GET['title']));
+            $description = trim(mysqli_real_escape_string($main_db, $_GET['description']));
+            $cost = abs(floatval($_GET['cost']));
             mysqli_query($main_db, 'INSERT INTO `tasks`
-            SET `author`='.$user['id'].',
-            `title`="'.$title.'",
-            `description`="'.$description.'",
-            `cost`='.$cost.'');
+            SET `author`=' . $user['id'] . ',
+            `title`="' . $title . '",
+            `description`="' . $description . '",
+            `cost`=' . $cost . '');
         }
         $action = 'my';
     }
+}
+if ($action == "no") {
+    exit();
 }
 
 // имена пользователей
