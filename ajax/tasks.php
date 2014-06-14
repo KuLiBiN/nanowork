@@ -150,7 +150,9 @@ if ($action == 'my') {
 
 
 $("#newTaskButton").click(function () {
+$("#newTask").hide();
 alert("zdfsdfgsdfgsdfg");
+
 /*
     $.ajax({
         url: "ajax/tasks.php?action=new&"
