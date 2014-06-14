@@ -150,7 +150,7 @@ if ($action == 'my') {
 
 
 $("#newTaskButton").click(function () {
-$("#newTask").hide();
+$("#newTask").modal("hide")
 alert("zdfsdfgsdfgsdfg");
 
 /*
