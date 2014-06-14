@@ -73,7 +73,7 @@ if ($action == 'my') {
 <button type="button" class="btn btn-default bwork">Все</button>
 <button type="button" class="btn btn-primary bwork0">Ожидают</button>
 <button type="button" class="btn btn-success bwork1">В работе</button>
-<button type="button" class="btn btn-warning">Новая задача</button>
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#newTask">Новая задача</button>
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -107,15 +107,15 @@ if ($action == 'my') {
     </table>
 </div>
 
-<div class="modal">
+<div class="modal fade" id="newTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        <p>One fine body…</p>
+        ...
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
