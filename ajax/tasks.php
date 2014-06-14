@@ -70,6 +70,9 @@ if ($action == 'my') {
         echo '
 <h1 class="page-header">Мои задачи</h1>
 
+<button type="button" class="btn btn-default">Все</button>
+<button type="button" class="btn btn-primary">Ожидают</button>
+<button type="button" class="btn btn-success">В работе</button>
 
 
 <div class="table-responsive">
