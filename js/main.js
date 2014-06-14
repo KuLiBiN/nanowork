@@ -27,6 +27,7 @@ $('#my_tasks').click(function () {
 
 // новая задача
 function newTask(form) {
+    $("#newTask").modal("hide");
     $.ajax({
         url: "ajax/tasks.php?action=new&" + form
     }).done(function (data) {
