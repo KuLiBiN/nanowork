@@ -25,8 +25,8 @@ $('#my_tasks').click(function () {
     });
 });
 
-function test(text){
+function newTask(form){
 
-    alert(text);
+    alert(form);
 
 }

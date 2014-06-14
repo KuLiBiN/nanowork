@@ -156,17 +156,9 @@ if ($action == 'my') {
 
 $("#newTaskButton").click(function () {
 
-/*
-    $.ajax({
-        url: "ajax/tasks.php?action=new&"+$("#newTaskForm").serialize();
-    }).done(function (data) {
-            $("#content").html(data);
-            $("#newTask").modal("hide");
-    });
-  */
-    //alert($("#newTaskForm").serialize());
-
-test("fffffffffffff");
+    var form=$("#newTaskForm").serialize();
+    $("#newTask").modal("hide");
+    newTask(form);
 
 });
 
