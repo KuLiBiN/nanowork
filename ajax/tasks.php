@@ -115,8 +115,7 @@ if ($action == 'my') {
         <h4 class="modal-title" id="myModalLabel">Новая задача</h4>
       </div>
       <div class="modal-body">
-
-       <form class="form-horizontal">
+       <form class="form-horizontal" id="newTaskForm">
   <fieldset>
     <div class="form-group">
       <label for="inputTitle" class="col-lg-2 control-label">Название</label>
@@ -141,13 +140,24 @@ if ($action == 'my') {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-        <button type="button" class="btn btn-primary">Добавить</button>
+        <button type="button" class="btn btn-primary" id="newTaskButton">Добавить</button>
       </div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
+
+
+$("#newTaskButton").click(function () {
+alert("zdfsdfgsdfgsdfg");
+/*
+    $.ajax({
+        url: "ajax/tasks.php?action=new&"
+    }).done(function (data) {
+            $("#content").html(data);
+    });*/
+});
 
 // все мои задачи
 $(".bwork").click(function () {
