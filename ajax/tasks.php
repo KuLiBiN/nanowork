@@ -163,7 +163,7 @@ if ($action == 'my') {
 </div>
 
 <script type="text/javascript">
-$("#newTask").modal("hide");
+
 // форма новой задачи
 $("#newTaskButton").click(function () {
     var form=$("#newTaskForm").serialize();

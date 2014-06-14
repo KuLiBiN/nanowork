@@ -21,15 +21,13 @@ if (!isset($user)) {
     if ($user['type'] == 1) {
         echo '
     <ul class="nav navbar-nav">
-        <li><a href="#all_tasks" id="all_tasks">Все задачи</a></li>
-        <li><a href="#all_performers" id="all_performers">Все исполнители</a></li>
+        <li><a href="#my_tasks" id="my_tasks">Мои задачи</a></li>
+        <li><a href="#">У вас на счету '.$user['money'].' руб.</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Заказчик ' . $user['name'] . ' <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="#my_tasks" id="my_tasks">Мои задачи</a></li>
-                <li><a href="#">Мой баланс</a></li>
                 <li><a href="?uid=0">Выход</a></li>
             </ul>
         </li>
@@ -40,14 +38,13 @@ if (!isset($user)) {
         echo '
     <ul class="nav navbar-nav">
         <li><a href="#all_tasks" id="all_tasks">Все задачи</a></li>
-        <li><a href="#all_performers" id="all_performers">Все исполнители</a></li>
+        <li><a href="#my_tasks" id="my_tasks">Мои задачи</a></li>
+        <li><a href="#">У вас на счету '.$user['money'].' руб.</a></li>
     </ul>
    <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Исполнитель ' . $user['name'] . ' <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="#my_tasks" id="my_tasks">Мои задачи</a></li>
-                <li><a href="#">Мой баланс</a></li>
                 <li><a href="?uid=0">Выход</a></li>
             </ul>
         </li>
