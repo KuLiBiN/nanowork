@@ -61,22 +61,14 @@ if ($action == 'all') {
         </tr>
         </thead>
         <tbody>';
-    $q = mysqli_query($main_db, 'SELECT
-                `tasks`.`id` AS `id`,
-                `tasks`.`author` AS `author_id`,
-                `authors`.`name` AS `author_name`,
-                `tasks`.`title` AS `title`,
-                `tasks`.`description` AS `description`,
-                `tasks`.`cost` AS `cost`
-            FROM `tasks`
-            INNER JOIN `users` AS `authors` ON `authors`.`id`=`tasks`.`author`
-            WHERE `tasks`.`performer`=0
-            ORDER BY `tasks`.`id` DESC');
+    $q = mysqli_query($main_db, 'SELECT `id`, `title`, `author`, `cost`
+        FROM `tasks` WHERE `performer`=0
+        ORDER BY `id` DESC');
 
     while ($task = mysqli_fetch_assoc($q)) {
         echo '<tr>
                 <td>' . $task['id'] . '</td>
-                <td>' . $task['author_name'] . '</td>
+                <td>' . $users_info[$task['author']] . '</td>
                 <td>' . $task['title'] . '</td>
                 <td>' . $task['cost'] . '</td>
             </tr>';
