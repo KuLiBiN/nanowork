@@ -27,7 +27,7 @@ if (isset($_GET['action'])) {
             SET `performer`=' . $user['id'] . '
             WHERE `id`=' . $tid . ' LIMIT 1');
         }
-        $action = 'my';
+        $action = 'all';
     }
 
     // добавление задачи для заказчиков
