@@ -35,12 +35,28 @@ if (isset($_GET['action'])) {
         if (isset($_GET['title']) && isset($_GET['description']) && isset($_GET['cost'])) {
             $title = trim(mysqli_real_escape_string($main_db, $_GET['title']));
             $description = trim(mysqli_real_escape_string($main_db, $_GET['description']));
-            $cost = abs(floatval($_GET['cost']));
-            mysqli_query($main_db, 'INSERT INTO `tasks`
-            SET `author`=' . $user['id'] . ',
-            `title`="' . $title . '",
-            `description`="' . $description . '",
-            `cost`=' . $cost . '');
+            $money_author = abs(floatval($_GET['cost']));   // деньги с заказчика
+            $money_system = round($money_author * $system_percent / 100, 2);    // деньги системы
+            $money_performer = $money_author - $money_system; // деньги исполнителю
+
+            if ($user['money'] >= $money_author) { // а хватит ли у вас денег?
+
+                // создаем задачу
+                mysqli_query($main_db, 'INSERT INTO `tasks`
+                SET `author`=' . $user['id'] . ',
+                `title`="' . $title . '",
+                `description`="' . $description . '",
+                `money_author`=' . $money_author . ',
+                `money_system`=' . $money_system . ',
+                `money_performer`=' . $money_performer . '');
+
+                // списываем деньги с заказчика
+                if (mysqli_affected_rows($main_db) > 0) {
+                    mysqli_query($main_db, 'UPDATE `users` SET `money`=(`money`-' . $money_author . ')
+                    WHERE `id`=' . $user['id'] . ' LIMIT 1');
+                }
+            }
+
         }
         $action = 'my';
     }
@@ -57,6 +73,7 @@ while ($u = mysqli_fetch_assoc($q)) {
     $users_info[$u['id']] = $u['name'];
 }
 
+// все доступные задачи для исполнителей
 if ($action == 'all') {
 
     echo '
@@ -73,7 +90,7 @@ if ($action == 'all') {
         </tr>
         </thead>
         <tbody>';
-    $q = mysqli_query($main_db, 'SELECT `id`, `title`, `author`, `cost`
+    $q = mysqli_query($main_db, 'SELECT `id`, `title`, `author`, `money_performer`
         FROM `tasks` WHERE `performer`=0
         ORDER BY `id` DESC');
 
@@ -82,7 +99,7 @@ if ($action == 'all') {
                 <td>' . $task['id'] . '</td>
                 <td>' . $users_info[$task['author']] . '</td>
                 <td>' . $task['title'] . '</td>
-                <td>' . $task['cost'] . '</td>
+                <td>' . $task['money_performer'] . '</td>
                 <td><button type="button" class="btn btn-success" onclick="takeTask(' . $task['id'] . ')">Выполнить</button></td>
             </tr>';
     }
@@ -92,9 +109,10 @@ if ($action == 'all') {
 </div>';
 }
 
+// мои задачи
 if ($action == 'my') {
 
-    // заказчик
+    // мои задачи для заказчика
     if ($user['type'] == 1) {
 
         echo '
@@ -116,7 +134,7 @@ if ($action == 'my') {
         </tr>
         </thead>
         <tbody>';
-        $q = mysqli_query($main_db, 'SELECT `id`, `title`, `performer`, `cost`
+        $q = mysqli_query($main_db, 'SELECT `id`, `title`, `performer`, `money_author`
         FROM `tasks` WHERE `author`=' . $user['id'] . '
         ORDER BY `id` DESC');
 
@@ -129,7 +147,7 @@ if ($action == 'my') {
                 <td>' . $task['id'] . '</td>
                 <td>' . $users_info[$task['performer']] . '</td>
                 <td>' . $task['title'] . '</td>
-                <td>' . $task['cost'] . '</td>
+                <td>' . $task['money_author'] . '</td>
             </tr>';
         }
         echo '
@@ -181,11 +199,8 @@ if ($action == 'my') {
 // форма новой задачи
 $("#newTaskButton").click(function () {
     var form=$("#newTaskForm").serialize();
-
     $("#newTaskModal").modal("hide");
-
     newTask(form);
-
 });
 
 // все мои задачи
@@ -194,15 +209,13 @@ $(".bwork").click(function () {
     $(".work1").show();
 });
 
-
 // мои задачи ожидающие
 $(".bwork0").click(function () {
     $(".work0").show();
     $(".work1").hide();
 });
 
-
-// все мои задачи завершенные
+// мои задачи завершенные
 $(".bwork1").click(function () {
     $(".work0").hide();
     $(".work1").show();
@@ -212,8 +225,7 @@ $(".bwork1").click(function () {
 ';
     }
 
-
-    // исполнитель
+    // мои задачи для исполнителя
     if ($user['type'] == 2) {
 
         echo '
@@ -230,7 +242,7 @@ $(".bwork1").click(function () {
         </tr>
         </thead>
         <tbody>';
-        $q = mysqli_query($main_db, 'SELECT `id`, `title`, `author`, `cost`
+        $q = mysqli_query($main_db, 'SELECT `id`, `title`, `author`, `money_performer`
         FROM `tasks` WHERE `performer`=' . $user['id'] . '
         ORDER BY `id` DESC');
 
@@ -239,7 +251,7 @@ $(".bwork1").click(function () {
                 <td>' . $task['id'] . '</td>
                 <td>' . $users_info[$task['author']] . '</td>
                 <td>' . $task['title'] . '</td>
-                <td>' . $task['cost'] . '</td>
+                <td>' . $task['money_performer'] . '</td>
             </tr>';
         }
         echo '

@@ -2,6 +2,8 @@
 session_start();
 require_once('lib/mysql.php');
 require_once('lib/auth.php');
+require_once('lib/lib.php');
+
 ?>
 
 <!DOCTYPE html>
