@@ -25,9 +25,9 @@ if (isset($_GET['action'])) {
         $tid = intval($_GET['task']);
         if ($tid > 0) {
             // получаем информацию по задаче
-            $q=mysqli_query($main_db, 'SELECT * FROM `tasks` WHERE `performer`=0 AND `id`='.$tid.' LIMIT 1');
-            if (mysqli_num_rows($q)>0){
-                $task=mysqli_fetch_assoc($q);
+            $q = mysqli_query($main_db, 'SELECT * FROM `tasks` WHERE `performer`=0 AND `id`=' . $tid . ' LIMIT 1');
+            if (mysqli_num_rows($q) > 0) {
+                $task = mysqli_fetch_assoc($q);
                 // забираем задачу
                 mysqli_query($main_db, 'UPDATE `tasks`
                 SET `performer`=' . $user['id'] . '
@@ -36,6 +36,7 @@ if (isset($_GET['action'])) {
                 mysqli_query($main_db, 'UPDATE `users`
                 SET `money`=(`money`+' . $task['money_performer'] . ')
                 WHERE `id`=' . $user['id'] . ' LIMIT 1');
+                $user['money'] = $user['money'] + $task['money_performer'];
             }
         }
         $action = 'my';
@@ -46,8 +47,8 @@ if (isset($_GET['action'])) {
         if (isset($_GET['title']) && isset($_GET['description']) && isset($_GET['cost'])) {
             $title = trim(mysqli_real_escape_string($main_db, $_GET['title']));
             $description = trim(mysqli_real_escape_string($main_db, $_GET['description']));
-            $money_author = abs(floatval($_GET['cost']));   // деньги с заказчика
-            $money_system = round($money_author * $system_percent / 100, 2);    // деньги системы
+            $money_author = abs(floatval($_GET['cost'])); // деньги с заказчика
+            $money_system = round($money_author * $system_percent / 100, 2); // деньги системы
             $money_performer = $money_author - $money_system; // деньги исполнителю
 
             if ($user['money'] >= $money_author) { // а хватит ли у вас денег?
@@ -65,6 +66,7 @@ if (isset($_GET['action'])) {
                 if (mysqli_affected_rows($main_db) > 0) {
                     mysqli_query($main_db, 'UPDATE `users` SET `money`=(`money`-' . $money_author . ')
                     WHERE `id`=' . $user['id'] . ' LIMIT 1');
+                    $user['money'] = $user['money'] - $task['money_author'];
                 }
             }
 
@@ -278,5 +280,5 @@ $(".bwork1").click(function () {
 
 // обновление денег
 echo '<script type="text/javascript">
-    refreshMoney('.$user['money'].');
+    refreshMoney(' . $user['money'] . ');
 </script>';
