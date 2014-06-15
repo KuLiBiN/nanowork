@@ -66,7 +66,7 @@ if (isset($_GET['action'])) {
                 if (mysqli_affected_rows($main_db) > 0) {
                     mysqli_query($main_db, 'UPDATE `users` SET `money`=(`money`-' . $money_author . ')
                     WHERE `id`=' . $user['id'] . ' LIMIT 1');
-                    $user['money'] = $user['money'] - $task['money_author'];
+                    $user['money'] = $user['money'] - $money_author;
                 }
             }
 
