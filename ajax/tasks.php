@@ -29,22 +29,21 @@ if (isset($_GET['action'])) {
         }
         $action = 'my';
     }
-    $action = 'my';
-}
-// добавление задачи для заказчиков
-if ($_GET['action'] == 'new' && $user['type'] == 1) {
-    if (isset($_GET['title']) && isset($_GET['description']) && isset($_GET['cost'])) {
-        $title = trim(mysqli_real_escape_string($main_db, $_GET['title']));
-        $description = trim(mysqli_real_escape_string($main_db, $_GET['description']));
-        $cost = abs(floatval($_GET['cost']));
-        mysqli_query($main_db, 'INSERT INTO `tasks`
+
+    // добавление задачи для заказчиков
+    if ($_GET['action'] == 'new' && $user['type'] == 1) {
+        if (isset($_GET['title']) && isset($_GET['description']) && isset($_GET['cost'])) {
+            $title = trim(mysqli_real_escape_string($main_db, $_GET['title']));
+            $description = trim(mysqli_real_escape_string($main_db, $_GET['description']));
+            $cost = abs(floatval($_GET['cost']));
+            mysqli_query($main_db, 'INSERT INTO `tasks`
             SET `author`=' . $user['id'] . ',
             `title`="' . $title . '",
             `description`="' . $description . '",
             `cost`=' . $cost . '');
+        }
+        $action = 'my';
     }
-    $action = 'my';
-}
 }
 if ($action == "no") {
     exit();
