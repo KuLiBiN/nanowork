@@ -27,7 +27,7 @@ if (isset($_GET['action'])) {
             SET `performer`=' . $user['id'] . '
             WHERE `id`=' . $tid . ' LIMIT 1');
         }
-        $action = 'all';
+        $action = 'my';
     }
 
     // добавление задачи для заказчиков
@@ -212,5 +212,43 @@ $(".bwork1").click(function () {
 ';
     }
 
+
+    // исполнитель
+    if ($user['type'] == 2) {
+
+        echo '
+<h1 class="page-header">Мои задачи</h1>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Заказчик</th>
+            <th>Описание</th>
+            <th>Стоимость</th>
+        </tr>
+        </thead>
+        <tbody>';
+        $q = mysqli_query($main_db, 'SELECT `id`, `title`, `author`, `cost`
+        FROM `tasks` WHERE `performer`=' . $user['id'] . '
+        ORDER BY `id` DESC');
+
+        while ($task = mysqli_fetch_assoc($q)) {
+            echo '<tr>
+                <td>' . $task['id'] . '</td>
+                <td>' . $users_info[$task['author']] . '</td>
+                <td>' . $task['title'] . '</td>
+                <td>' . $task['cost'] . '</td>
+            </tr>';
+        }
+        echo '
+        </tbody>
+    </table>
+</div>
+
+
+';
+    }
 
 }
