@@ -45,5 +45,6 @@ function takeTask(tid) {
 
 // обновление денег
 function refreshMoney(money){
-    $("#money").html(money);
+   // $("#money").html(money);
+    alert(money);
 }
