@@ -16,7 +16,6 @@ if (isset($_SESSION['user']) || isset($_GET['uid'])) {
 
     // получаем профиль из базы
     $q = mysqli_query($main_db, 'SELECT * FROM `users` WHERE `id`=' . $uid . ' LIMIT 1');
-
     if (mysqli_num_rows($q) > 0) {
         // если есть такой юзер - записываем его профиль в сессию
         $user = mysqli_fetch_assoc($q);
