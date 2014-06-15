@@ -18,7 +18,7 @@ if (!isset($user)) {
         echo '
     <ul class="nav navbar-nav">
         <li><a href="#my_tasks" id="my_tasks">Мои задачи</a></li>
-        <li><a href="#">У вас на счету '.$user['money'].' руб.</a></li>
+        <li><a href="#">У вас на счету <span id="money">'.$user['money'].'</span> руб.</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -35,7 +35,7 @@ if (!isset($user)) {
     <ul class="nav navbar-nav">
         <li><a href="#all_tasks" id="all_tasks">Все задачи</a></li>
         <li><a href="#my_tasks" id="my_tasks">Мои задачи</a></li>
-        <li><a href="#">У вас на счету '.$user['money'].' руб.</a></li>
+        <li><a href="#">У вас на счету <span id="money">'.$user['money'].'</span> руб.</a></li>
     </ul>
    <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
