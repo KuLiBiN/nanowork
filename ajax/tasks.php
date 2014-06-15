@@ -58,6 +58,7 @@ if ($action == 'all') {
             <th>Заказчик</th>
             <th>Задача</th>
             <th>Стоимость</th>
+            <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>';
@@ -71,6 +72,7 @@ if ($action == 'all') {
                 <td>' . $users_info[$task['author']] . '</td>
                 <td>' . $task['title'] . '</td>
                 <td>' . $task['cost'] . '</td>
+                <td><button type="button" class="btn btn-success">Выполнить</button></td>
             </tr>';
     }
     echo '
