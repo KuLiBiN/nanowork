@@ -25,7 +25,7 @@ if (isset($_SESSION['user']) || isset($_GET['uid'])) {
         // если юзера нет - обнуляем сессию и профиль
         unset($uid);
         unset($user);
-        unset($_SESSION);
+        unset($_SESSION['user']);
     }
 
 }
