@@ -23,9 +23,19 @@ if (isset($_GET['action'])) {
     if ($_GET['action'] == 'take' && isset($_GET['task']) && $user['type'] == 2) {
         $tid = intval($_GET['task']);
         if ($tid > 0) {
-            mysqli_query($main_db, 'UPDATE `tasks`
-            SET `performer`=' . $user['id'] . '
-            WHERE `id`=' . $tid . ' LIMIT 1');
+            // получаем информацию по задаче
+            $q=mysqli_query($main_db, 'SELECT * FROM `tasks` WHERE `performer`=0 AND `id`='.$tid.' LIMIT 1');
+            if (mysqli_num_rows($q)>0){
+                $task=mysqli_fetch_assoc($q);
+                // забираем задачу
+                mysqli_query($main_db, 'UPDATE `tasks`
+                SET `performer`=' . $user['id'] . '
+                WHERE `id`=' . $task['id'] . ' LIMIT 1');
+                // получаем деньги
+                mysqli_query($main_db, 'UPDATE `users`
+                SET `money`=(`money`+' . $task['money_performer'] . ')
+                WHERE `id`=' . $users['id'] . ' LIMIT 1');
+            }
         }
         $action = 'my';
     }
