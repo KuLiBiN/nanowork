@@ -278,5 +278,5 @@ $(".bwork1").click(function () {
 
 // обновление денег
 echo '<script type="text/javascript">
-$("#money").html("'.$user['money'].'");
+    refreshMoney('.$user['money'].');
 </script>';

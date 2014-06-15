@@ -42,3 +42,8 @@ function takeTask(tid) {
         $('#content').html(data);
     });
 }
+
+// обновление денег
+function refreshMoney(money){
+    $("#money").html(money);
+}
