@@ -20,8 +20,8 @@ if (isset($_GET['action'])) {
         $action = 'my';
     }
     // взять задачу
-    if ($_GET['action'] == 'take' && isset($_GET['tid']) && $user['type'] == 2) {
-        $tid = intval($_GET['tid']);
+    if ($_GET['action'] == 'take' && isset($_GET['task']) && $user['type'] == 2) {
+        $tid = intval($_GET['task']);
         if ($tid > 0) {
             mysqli_query($main_db, 'UPDATE `tasks`
             SET `performer`=' . $user['id'] . '
