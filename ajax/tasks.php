@@ -19,20 +19,32 @@ if (isset($_GET['action'])) {
     if ($_GET['action'] == 'my') {
         $action = 'my';
     }
-    // добавление задачи для заказчиков
-    if ($_GET['action'] == 'new' && $user['type'] == 1) {
-        if (isset($_GET['title']) && isset($_GET['description']) && isset($_GET['cost'])) {
-            $title = trim(mysqli_real_escape_string($main_db, $_GET['title']));
-            $description = trim(mysqli_real_escape_string($main_db, $_GET['description']));
-            $cost = abs(floatval($_GET['cost']));
-            mysqli_query($main_db, 'INSERT INTO `tasks`
+    // взять задачу
+    if ($_GET['action'] == 'take' && isset($_GET['tid']) && $user['type'] == 2) {
+        $tid = intval($_GET['tid']);
+        if ($tid > 0) {
+            mysqli_query($main_db, 'UPDATE `tasks`
+            SET `performer`=' . $user['id'] . '
+            WHERE `id`=' . $tid . ' LIMIT 1');
+        }
+        $action = 'my';
+    }
+    $action = 'my';
+}
+// добавление задачи для заказчиков
+if ($_GET['action'] == 'new' && $user['type'] == 1) {
+    if (isset($_GET['title']) && isset($_GET['description']) && isset($_GET['cost'])) {
+        $title = trim(mysqli_real_escape_string($main_db, $_GET['title']));
+        $description = trim(mysqli_real_escape_string($main_db, $_GET['description']));
+        $cost = abs(floatval($_GET['cost']));
+        mysqli_query($main_db, 'INSERT INTO `tasks`
             SET `author`=' . $user['id'] . ',
             `title`="' . $title . '",
             `description`="' . $description . '",
             `cost`=' . $cost . '');
-        }
-        $action = 'my';
     }
+    $action = 'my';
+}
 }
 if ($action == "no") {
     exit();
@@ -72,7 +84,7 @@ if ($action == 'all') {
                 <td>' . $users_info[$task['author']] . '</td>
                 <td>' . $task['title'] . '</td>
                 <td>' . $task['cost'] . '</td>
-                <td><button type="button" class="btn btn-success">Выполнить</button></td>
+                <td><button type="button" class="btn btn-success" onclick="takeTask(' . $task['id'] . ')">Выполнить</button></td>
             </tr>';
     }
     echo '

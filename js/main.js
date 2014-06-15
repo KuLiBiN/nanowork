@@ -33,3 +33,12 @@ function newTask(form) {
         $('#content').html(data);
     });
 }
+
+// взять задачу
+function takeTask(tid) {
+    $.ajax({
+        url: "ajax/tasks.php?action=take&task=" + tid
+    }).done(function (data) {
+        $('#content').html(data);
+    });
+}
