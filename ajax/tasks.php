@@ -98,7 +98,7 @@ if ($action == 'my') {
 <button type="button" class="btn btn-default bwork">Все</button>
 <button type="button" class="btn btn-primary bwork0">Ожидают</button>
 <button type="button" class="btn btn-success bwork1">В работе</button>
-<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#newTask">Новая задача</button>
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#newTaskModal">Новая задача</button>
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -132,7 +132,7 @@ if ($action == 'my') {
     </table>
 </div>
 
-<div class="modal fade" id="newTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="newTaskModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -177,7 +177,7 @@ if ($action == 'my') {
 $("#newTaskButton").click(function () {
     var form=$("#newTaskForm").serialize();
 
-    $(".modal").modal("toggle");
+    $("#newTaskModal").modal("hide");
 
     newTask(form);
 
