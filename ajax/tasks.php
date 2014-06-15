@@ -35,7 +35,7 @@ if (isset($_GET['action'])) {
                 // получаем деньги
                 mysqli_query($main_db, 'UPDATE `users`
                 SET `money`=(`money`+' . $task['money_performer'] . ')
-                WHERE `id`=' . $users['id'] . ' LIMIT 1');
+                WHERE `id`=' . $user['id'] . ' LIMIT 1');
             }
         }
         $action = 'my';
